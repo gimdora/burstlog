@@ -6,7 +6,6 @@ The software is a command-line program written in Python. When run, it prints a 
 
 My purpose for creating this software is to verify that my development environment (Python, Git, Visual Studio Code, and a public GitHub repository) is fully set up before I start the larger module projects, and to practice the full submission workflow that every module in this course requires: write the code, fill in the README, record the demo video, and upload the result.
 
-[Software Demo Video](http://youtube.link)
 
 # Development Environment
 
