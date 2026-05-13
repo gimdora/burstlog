@@ -1,0 +1,35 @@
+{% extends "tracker/base.html" %}
+{% comment %}Detail page: one book, its notes, and the add note form.{% endcomment %}
+
+{% block title %}{{ book.title }} — Reading Tracker{% endblock %}
+
+{% block content %}
+<p><a href="{% url 'book_list' %}">&larr; Back to all books</a></p>
+
+<h2>{{ book.title }}</h2>
+<p>by {{ book.author }}</p>
+<p class="status">Status: {{ book.get_status_display }}</p>
+
+<h2>Add a note</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="body">Note</label>
+    <textarea id="body" name="body" rows="3" required
+              placeholder="What stood out in this book?"></textarea>
+    <button type="submit">Add Note</button>
+</form>
+
+<h2>Notes ({{ notes|length }})</h2>
+{% if notes %}
+    {% for note in notes %}
+        <div class="note-item">
+            <p>{{ note.body|linebreaksbr }}</p>
+            <div class="status">
+                Added {{ note.created_at|date:"M j, Y g:i a" }}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p class="empty">No notes yet. Be the first to add one.</p>
+{% endif %}
+{% endblock %}
